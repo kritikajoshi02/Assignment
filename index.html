@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div>
+  <h1><center>Assignment</center></h1>
+<!------- Part 1------->
+  <div style="padding:10px 0px;" class="bg-primary">
+    <center>
+       <h2>Convertion of seconds into hours-minutes-seconds</h2>
+           Enter Seconds:<input style="width:20%;margin:15px;" class="form-control" id="data" type="number" >
+   
+      <button style="width:20%;margin:15px;" class="btn btn-info" onclick="convertTime()"> Convert </button>
+
+      <h3>Hours: <span class="out1"></span>  
+          Minutes: <span class="out2"></span> 
+           Seconds: <span class="out3"></span></h3> 
+    </center>
+   </div>
+
+<!--------- Part 2-------->
+   <div style="padding:10px 0px;" class="bg-danger">
+    <center>
+      <h2>Sort string according to first element</h2>
+    <input style="width:20%;margin:15px;" class="form-control" type="number" id="val" placeholder="Enter number of strings">
+     <input style="width:20%;margin:15px;" class="form-control" id="csv" onkeyup="this.value = this.value.toUpperCase();" type="text" placeholder="Enter string">
+     <button style="width:20%;margin:15px;" class="btn btn-danger" onClick="convert()">Click to sort</button>
+     <br>
+    <span id="demo"></span>
+   </center>
+   </div>
+
+<!--------- Part 3-------->
+   <div style="padding:10px 0px;" class="bg-warning">
+     <center>
+         <h2>XOR program</h2>
+         <input style="width:20%;margin:15px;" class="form-control" type="number" id="val2" placeholder="Number of testcases">
+          <input style="width:20%;margin:15px;" class="form-control" id="csv2" type="text" placeholder="Enter R Number">
+          <input style="width:20%;margin:15px;" class="form-control" id="csv3" type="text" placeholder="Enter L Number">
+          <button style="width:20%;margin:15px;" class="btn btn-danger" onClick="convert2()">Submit</button>
+          <br>
+    <h2><span id="demo2"></span></h2>
+     </center>
+   </div>
+ </body>
+</html>
+
+      
+    <script type="text/javascript"> 
+
+        function convertTime() { 
+            var given_seconds = document.getElementById("data").value;  
+            
+            q1 = new Date(given_seconds * 1000); 
+            
+            hours = q1.getUTCHours(); 
+            T1 = hours.toString().padStart(2, '0')
+
+            minutes = q1.getUTCMinutes(); 
+            T2 = minutes.toString().padStart(2, '0')
+
+            seconds = q1.getSeconds();
+            T3 = seconds.toString().padStart(2, '0') 
+           
+               document.querySelector('.out1').textContent 
+                        =T1;
+                 document.querySelector('.out2').textContent 
+                        = T2;
+                     document.querySelector('.out3').textContent 
+                        = T3; 
+            }
+
+
+
+             document.getElementById('csv').onkeydown = function(e) {
+            var i = document.getElementById('val').value;
+            if (!e) var e = window.event;
+            var list = this.value.split(',');
+            if (list.length == i && e.keyCode == '188') {
+              this.style.borderColor = 'red';
+              var _this = this;
+              setTimeout(function() {
+                _this.style.borderColor = '';
+                _this.disabled = false;
+              }, 1000);
+              return false;
+            }
+          }
+
+
+
+
+         function convert(){
+           var str = document.getElementById("csv").value;
+           var str1 = str.split(",");
+           console.log(str1);
+
+           str1.sort();
+           document.getElementById("demo").innerHTML = str1;
+       }
+
+
+       
+
+           document.getElementById('csv2').onkeydown = function(e) {
+            var i = document.getElementById('val2').value;
+            if (!e) var e = window.event;
+            var list = this.value.split(',');
+            if (list.length == i && e.keyCode == '188') {
+              this.style.borderColor = 'red';
+              var _this = this;
+              setTimeout(function() {
+                _this.style.borderColor = '';
+                _this.disabled = false;
+              }, 1000);
+              return false;
+            }
+          }
+
+
+           document.getElementById('csv3').onkeydown = function(e) {
+            var i = document.getElementById('val2').value;
+            if (!e) var e = window.event;
+            var list = this.value.split(',');
+            if (list.length == i && e.keyCode == '188') {
+              this.style.borderColor = 'red';
+              var _this = this;
+              setTimeout(function() {
+                _this.style.borderColor = '';
+                _this.disabled = false;
+              }, 1000);
+              return false;
+            }
+          }
+
+
+           function convert2(){
+            var res =[];
+           var r = document.getElementById("csv2").value;
+           var r1 = r.split(",");
+           console.log(r1);
+
+           var l = document.getElementById("csv3").value;
+           var l1 = l.split(",");
+           console.log(l1);
+
+            for (let i = 0; i < r1.length; i++) {
+                var v1 = r1[i];
+                var v2 = l1[i];
+                console.log(v1, v2);
+
+                var oddCount = (v1 - v2) / 2;
+               
+                if (v1 % 2 == 1 || v2 % 2 == 1) {
+                oddCount++; }
+      
+                if (oddCount % 2 == 0) {
+                res.push("Even"); }
+               else{
+                res.push("Odd"); }
+    
+                }
+                  console.log(res);
+
+           document.getElementById("demo2").innerHTML = res;
+       }
+
+
+
+
+
+
+    </script> 
